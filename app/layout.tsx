@@ -12,9 +12,7 @@ export const metadata: Metadata = {
   title: "Chaitanya Pawar",
   description: "Chaitanya Pawar's Portfolio",
   icons: {
-    icon: "/favicon-132.png",
-    shortcut: "/favicon-132.png",
-    apple: "/favicon-132.png",
+    icon: "/132.png",
   },
 };
 
@@ -26,6 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <link rel="icon" href="/132.png" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
