@@ -3,11 +3,20 @@
 import { useTheme } from './ThemeProvider';
 
 export default function ThemeToggle() {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme, isTransitioning } = useTheme();
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    toggleTheme({
+      x: rect.left + rect.width / 2,
+      y: rect.top + rect.height / 2,
+    });
+  };
 
   return (
     <button
-      onClick={toggleTheme}
+      onClick={handleClick}
+      disabled={isTransitioning}
       className="flex items-center gap-2 transition-opacity hover:opacity-70"
       aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
     >
@@ -26,7 +35,7 @@ export default function ThemeToggle() {
           >
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
-          <span className="text-sm font-medium">Dark</span>
+          <span className="text-base font-medium">Dark</span>
         </>
       ) : (
         <>
@@ -51,10 +60,9 @@ export default function ThemeToggle() {
             <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
           </svg>
-          <span className="text-sm font-medium">Light</span>
+          <span className="text-base font-medium">Light</span>
         </>
       )}
     </button>
   );
 }
-
