@@ -1,12 +1,6 @@
 import type { Metadata } from "next";
-import { Funnel_Sans } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/component/ThemeProvider";
-
-const funnelSans = Funnel_Sans({
-  variable: "--font-funnel-sans",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Chaitanya Pawar",
@@ -36,7 +30,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${funnelSans.variable} antialiased`}>
+      <body className="antialiased">
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
